@@ -1,0 +1,55 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Skill {
+  createdAt        DateTime @default(now())
+  id               String   @id @default(cuid())
+  name             String?
+  proficiencyLevel String?
+  updatedAt        DateTime @updatedAt
+}
+
+model Project {
+  createdAt    DateTime  @default(now())
+  description  String?
+  endDate      DateTime?
+  githubLink   String?
+  id           String    @id @default(cuid())
+  liveDemoLink String?
+  name         String?
+  startDate    DateTime?
+  updatedAt    DateTime  @updatedAt
+}
+
+model Testimonial {
+  authorName String?
+  content    String?
+  createdAt  DateTime  @default(now())
+  date       DateTime?
+  id         String    @id @default(cuid())
+  updatedAt  DateTime  @updatedAt
+}
+
+model BlogPost {
+  content       String?
+  createdAt     DateTime  @default(now())
+  id            String    @id @default(cuid())
+  publishedDate DateTime?
+  title         String?
+  updatedAt     DateTime  @updatedAt
+}
+
+model ContactInfo {
+  address     String?
+  createdAt   DateTime @default(now())
+  email       String?
+  id          String   @id @default(cuid())
+  phoneNumber String?
+  updatedAt   DateTime @updatedAt
+}
